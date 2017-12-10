@@ -1,0 +1,37 @@
+<!-- Main content -->
+<section class="content container-fluid">
+
+  <div class="row">
+
+    <!-- Alerts -->
+    <div class="col-sm-12">
+    </div>
+    <!-- /. alerts -->
+
+    <div class="col-sm-3">
+      <%= render "includes/box-email" %>
+    </div>
+
+    <div class="col-sm-9">
+      <div class="box box-primary">
+
+        <div class="box-body no-padding">
+          <div class="mailbox-messages">
+            <% if current_page?(admin_emails_path) %>
+              <%= render "includes/tables/emails_inbox" %>
+            <% elsif current_page?(admin_draft_emails_path) %>
+              <%= render "includes/tables/emails_draft" %>
+            <% elsif current_page?(admin_sent_emails_path) %>
+              <%= render "includes/tables/emails_sent" %>
+            <% elsif current_page?(admin_trash_emails_path) %>
+              <%= render "includes/tables/emails_trash" %>
+            <% end %>
+          </div>
+        </div>
+
+      </div><!-- /. box -->
+
+    </div><!-- /. col -->
+  </div><!-- /. row -->
+
+</section><!-- /.content -->

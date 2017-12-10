@@ -1,0 +1,47 @@
+<!-- Main content -->
+<section class="content container-fluid">
+
+  <div class="row">
+
+    <!-- Alert -->
+    <div class="col-sm-12">
+
+    </div>
+    <!-- /. alert -->
+
+    <div class="col-sm-3">
+      <%= render "includes/box-profile" %>
+    </div>
+
+    <div class="@if(Auth::id() == $resource->id) col-sm-9 @else col-sm-12 @endif">
+
+      <div class="nav-tabs-custom">
+
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#user-data" data-toggle="tab" aria-expanded="true">Settings</a></li>
+          <li><a href="#password" data-toggle="tab" aria-expanded="true">Password</a></li>
+          <li><a href="#image" data-toggle="tab" aria-expanded="true">Avatar</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+          <div id="user-data" class="tab-pane active">
+            <%= render "includes/forms/users_update_adv" %>
+          </div>
+
+          <div id="password" class="tab-pane">
+            <%= render "includes/forms/users_password" %>
+          </div>
+
+          <div id="image" class="tab-pane">
+            <%= render "includes/forms/users_image" %>
+          </div>
+
+        </div><!-- /. tab content -->
+
+      </div><!-- /. box -->
+
+    </div><!-- /. col -->
+  </div><!-- /. row -->
+
+</section><!-- /.content -->

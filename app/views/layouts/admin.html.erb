@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <%= render "includes/head" %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+
+<div class="wrapper">
+
+  <!-- Main Header -->
+  <header class="main-header">
+    <%= render "includes/header" %>
+  </header>
+  <!-- /. main header -->
+
+  <!-- Sidebar -->
+  <aside class="main-sidebar">
+    <%= render "includes/sidebar" %>
+  </aside>
+  <!-- /. sidebar -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <%= render "includes/content-header" %>
+    <%= yield %>
+  </div>
+  <!-- /. content wrapper -->
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <%= render "includes/footer" %>
+  </footer>
+  <!-- ./ footer -->
+
+</div>
+<!-- ./wrapper -->
+
+<!-- Scripts -->
+<%= render "includes/scripts" %>
+<!-- ./ scripts -->
+
+</body>
+</html>

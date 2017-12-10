@@ -1,0 +1,24 @@
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>To</th>
+      <th class="col-sm-12">Subject</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @resources.each do |r| %>
+      <tr>
+        <td>
+          <label class="label label-primary"><i class="fa fa-paper-plane"></i></label>
+        </td>
+        <td class="mailbox-name text-nowrap">To</td>
+        <td><%= r.subject %></td>
+        <td class="text-nowrap"><%= r.created_at %></td>
+        <td>Delete</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

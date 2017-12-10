@@ -1,0 +1,31 @@
+<%= link_to "Compose", new_admin_email_path, class: "btn btn-primary btn-block margin-bottom" %>
+<div class="box box-solid">
+  <div class="box-header with-border">
+  <h3 class="box-title">Mailbox</h3>
+    <div class="box-tools pull-right">
+      <button class="btn btn-box-tool" type="button" data-widget="collapse">
+        <i class="fa fa-minus"></i>
+      </button>
+    </div>
+  </div>
+  <div class="box-body no-padding">
+    <ul class="nav nav-pills nav-stacked">
+      <li class="">
+        <%= link_to "<i class='fa fa-inbox'></i><span>Emails</span>".html_safe, admin_emails_path %>
+      </li>
+
+      <li class="">
+        <%= link_to "<i class='fa fa-file-text'></i><span>Draft</span>".html_safe, admin_draft_emails_path %>
+      </li>
+
+      <li class="">
+        <%= link_to "<i class='fa fa-envelope'></i><span>Sent</span>".html_safe, admin_sent_emails_path %>
+      </li>
+
+      <li class="">
+        <%= link_to "<i class='fa fa-trash'></i><span>Trashed</span>".html_safe, admin_trash_emails_path %>
+      </li>
+
+    </ul>
+  </div>
+</div>

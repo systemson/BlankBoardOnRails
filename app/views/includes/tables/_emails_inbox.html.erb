@@ -1,0 +1,27 @@
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>From</th>
+      <th class="col-sm-12">Subject</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @resources.each do |r| %>
+      <td class="text-nowrap">
+        <label class="label label-success">
+            <i class="fa fa-envelope"></i>
+        </label>
+      </td>
+      <td class="mailbox-name text-nowrap">
+        <a href="{{ route($name . '.show', $resource->id) }}"><%= r.name %></a>
+      </td>
+        <td><%= r.subject %></td>
+        <td class="text-nowrap"><%= r.created_at %></td>
+        <td>Delete</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,55 @@
+<section class="content container-fluid">
+
+  <div class="row">
+
+    <!-- Alerts -->
+    <div class="col-sm-12">
+
+    </div>
+    <!-- /. alerts -->
+
+    <div class="col-sm-3">
+      <%= render "includes/box-profile" %>
+    </div>
+
+    <div class="col-sm-9">
+
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#info" data-toggle="tab" aria-expanded="true">Info</a></li>
+          <li><a href="#messages" data-toggle="tab" aria-expanded="true">Messages</a></li>
+          <li><a href="#settings" data-toggle="tab" aria-expanded="true">Basic Settings</a></li>
+        </ul>
+        <div class="tab-content">
+
+          <div id="info" class="tab-pane active">
+            <p>Roles:</p>
+            <ul>
+              <% @resource.roles.each do |r| %>
+                <li><%= r.name %></li>
+              <% end %>
+            </ul>
+          </div>
+
+          <div id="messages" class="tab-pane">
+            @include('includes.tables.user_emails')
+          </div>
+
+          <div id="settings" class="tab-pane">
+            <div class="box-header with-border">
+              <div class="pull-left">
+                <a href="{{ route('users.edit', $resource->id) }}" class="btn btn-primary">{{ __('users.adv-config') }}</a>
+              </div>
+            </div>
+
+            @include('includes.forms.users_update', ['name' => $name])
+          </div>
+
+        </div><!-- /. tab content -->
+
+      </div><!-- /. box -->
+
+    </div><!-- /. col -->
+  </div><!-- /. row -->
+
+</section><!-- /.content -->
