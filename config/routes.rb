@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   # Auth
   get 'login/', to: 'auth/login#login', as: 'login'
+  post 'logout/', to: 'auth/login#logout', as: 'logout'
   get 'register/', to: 'auth/login#register', as: 'register'
   post 'auth/', to: 'auth/login#auth'
 

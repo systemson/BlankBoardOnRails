@@ -11,6 +11,7 @@ class Users < ActiveRecord::Migration[5.1]
       t.column :image, :string
       t.column :description, :text
       t.column :last_login, :datetime
+      t.column :remember_digest, :string
       t.timestamps
     end
   end

@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20171202223305) do
     t.string "image"
     t.text "description"
     t.datetime "last_login"
+    t.string "remember_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
