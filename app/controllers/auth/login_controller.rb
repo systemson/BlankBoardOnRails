@@ -1,9 +1,8 @@
 class Auth::LoginController < ApplicationController
-  #include Authentication
-
-  layout 'admin'
+  require 'date'
 
   def login
+    @user = auth_user
   end
 
   def auth
@@ -11,6 +10,10 @@ class Auth::LoginController < ApplicationController
     user = User.find_by_user(params[:user])
 
     if user && user.authenticate(params[:password])
+
+      user.remember_token = token
+      user.last_login = Date.today
+      user.save
 
       session[:user_id] = user.id
       session[:user_password] = params[:password]
@@ -23,6 +26,10 @@ class Auth::LoginController < ApplicationController
   end
 
   def logout
+
+    user = User.find(session[:user_id])
+    user.remember_token = nil
+    user.save
 
     reset_session
     redirect_to login_path
