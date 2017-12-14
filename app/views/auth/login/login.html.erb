@@ -42,7 +42,7 @@
                 <div class="col-sm-offset-4 col-sm-6">
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('auth.remember') }}
+                      <input type="checkbox" name="remember"> Remember me
                     </label>
                   </div>
                 </div>
@@ -50,15 +50,15 @@
 
               <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-8">
-                  <%= submit_tag "Save", :class => "btn btn-success" %>
-                  <a class="btn btn-link" href="{{ route('password.request') }}">{{ __('auth.forgot') }}</a>
+                  <%= submit_tag "Login", :class => "btn btn-primary" %>
+                  <a class="btn btn-link" href="#">Forgot your password?</a>
                 </div>
               </div>
 
             <% end %>
 
            <div class="col-sm-12 text-center">
-             <a class="btn btn-link" href="{{ route('register') }}">{{ __('auth.unregistered') }}</a>
+             <a class="btn btn-link" href="#">Register a new account.</a>
            </div>
 
           </div><!-- /. box body -->

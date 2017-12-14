@@ -1,4 +1,4 @@
-class Admin::EmailsController < ApplicationController
+class Admin::EmailsController < AdminController
 
   def index
     @resources = Email.all

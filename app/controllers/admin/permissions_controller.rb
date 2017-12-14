@@ -1,4 +1,4 @@
-class Admin::PermissionsController < ApplicationController
+class Admin::PermissionsController < AdminController
 
   def index
     @resources = Permission.all

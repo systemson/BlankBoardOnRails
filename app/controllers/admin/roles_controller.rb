@@ -1,4 +1,4 @@
-class Admin::RolesController < ApplicationController
+class Admin::RolesController < AdminController
 
   def index
     @resources = Role.all

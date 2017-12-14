@@ -4,7 +4,7 @@
   <%= render "includes/head" %>
   <%= csrf_meta_tags %>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue <% if(@auth_check) %> sidebar-mini <% else %> sidebar-collapse <% end %>">
 
 <div class="wrapper">
 
@@ -14,11 +14,13 @@
   </header>
   <!-- /. main header -->
 
+  <% if(@auth_check) %>
   <!-- Sidebar -->
   <aside class="main-sidebar">
     <%= render "includes/sidebar" %>
   </aside>
   <!-- /. sidebar -->
+  <% end %>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

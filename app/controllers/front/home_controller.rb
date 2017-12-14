@@ -1,4 +1,4 @@
-class Front::HomeController < ApplicationController
+class Front::HomeController < FrontController
   def index
     @title = 'Inicio'
   end

@@ -1,4 +1,5 @@
-class Auth::LoginController < ApplicationController
+class Auth::LoginController < FrontController
+  skip_before_action :require_guest, only: [:logout]
   require 'date'
 
   def login
@@ -26,14 +27,12 @@ class Auth::LoginController < ApplicationController
   end
 
   def logout
-
     user = User.find(session[:user_id])
     user.remember_token = nil
     user.save
 
     reset_session
     redirect_to login_path
-
   end
 
   def register
