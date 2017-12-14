@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20171202223305) do
     t.string "image"
     t.text "description"
     t.datetime "last_login"
+    t.datetime "last_password_change"
     t.string "remember_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
