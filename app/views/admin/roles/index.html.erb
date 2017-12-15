@@ -32,6 +32,7 @@
                 <th>ID</th>
                 <th class="text-center">Action</th>
                 <th class="col-sm-12">Name</th>
+                <th class="text-center">slug</th>
                 <th class="text-center">Status</th>
               </tr>
             </thead>
@@ -44,6 +45,7 @@
                   <%= link_to '<i class="fa fa-trash"></i>'.html_safe, admin_role_path(r), :method => :delete, :class => 'btn btn-danger btn-xs', :data => { :confirm => 'Are you sure?',  } %></td>
                 </td>
                 <td><%= link_to r.name, edit_admin_role_path(r) %></td>
+                <td><span class=""><%= r.slug %></span></td>
                 <td><span class=""><%= r.status %></span></td>
               </tr>
               <% end %>

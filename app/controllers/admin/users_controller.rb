@@ -36,6 +36,35 @@ class Admin::UsersController < AdminController
     redirect_to edit_admin_user_path
   end
 
+  def upload
+    # Find user
+    @resource = User.find(params[:id])
+
+    # Check if user's image is set
+    if (!@resource.image.nil?)
+      # Delete user's image is exists
+      File.delete(Rails.root.join('public', 'img', 'avatar', @resource.image)) if File.exist?(Rails.root.join('public', 'img', 'avatar', @resource.image))
+    end
+
+    # Get the user's image from request
+    @image = params[:user][:image]
+
+    # Set the image's name
+    @avatar_name = token + File.extname(@image.original_filename)
+
+    # Store the image in file system
+    File.open(Rails.root.join('public', 'img', 'avatar', @avatar_name), 'wb') do |file|
+      file.write(@image.read)
+    end
+
+    # Update the user's image in DB
+    @resource.image = @avatar_name
+    @resource.save
+
+    # Redirect to edit user
+    redirect_to edit_admin_user_path
+  end
+
   def destroy
     @resource = User.find(params[:id])
     @resource.destroy

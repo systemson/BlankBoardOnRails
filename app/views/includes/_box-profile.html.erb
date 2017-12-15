@@ -1,10 +1,10 @@
 <div class="box box-primary">
   <div class="box-body box-profile">
-    <img class="profile-user-img img-responsive img-circle" src="<%= @resource.image %>">
+    <img class="profile-user-img img-responsive img-circle" src="<%= @resource.avatar %>">
     <h3 class="profile-username text-center"><%= @resource.name %></h3>
     <p class="text-muted text-center">
       <% @resource.roles.each do |r| %>
-        <%= r.name %>
+        <%= r.name + ' ' %>
       <% end %>
     </p>
   </div>

@@ -26,7 +26,8 @@
               <tr>
                 <th>ID</th>
                 <th class="col-sm-12">Name</th>
-                <th class="tex-center">Module</th>
+                <th class="text-center">Slug</th>
+                <th class="text-center">Module</th>
                 <th class="text-center">Status</th>
               </tr>
             </thead>
@@ -36,6 +37,7 @@
               <tr>
                 <td><%= r.id %></td>
                 <td><%= link_to r.name, edit_admin_permission_path(r) %></td>
+                <td><span class=""><%= r.slug %></span></td>
                 <td><span class=""><%= r.module %></span></td>
                 <td><span class=""><%= r.status %></span></td>
               </tr>

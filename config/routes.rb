@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
     # Access
     resources :users
+    patch '/users/:id/upload', to: 'users#upload', as: 'users_upload'
     resources :roles, :except => [:show]
     resources :permissions, :only => [:index, :edit, :update]
 

@@ -1,4 +1,5 @@
 module AuthHelper
+
   def token
     SecureRandom.urlsafe_base64
   end

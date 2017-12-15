@@ -1,24 +1,17 @@
-{{ Form::open(array('url' => route('users.update', $resource->id), 'method' => 'PUT', 'class' => 'form-horizontal', 'files'=>true)) }}
-
-  {{ Form::hidden('form', 'avatar-update') }}
+<%= form_for @resource, url: {action: "upload"}, html: {class: "form-horizontal"} do |f| %>
 
   <div class="form-group">
     <div class="col-sm-12 text-right">
-      {{ Form::submit(__('messages.btn.save.name'), array('class' => __('messages.btn.save.class'))) }}
-      {{ Form::reset(__('messages.btn.reset.name'), array('class' => __('messages.btn.reset.class'))) }}
+      <%= f.submit "Save", :class => "btn btn-success" %>
+      <%= f.button "Reset", type: :reset, :class => "btn btn-default" %>
     </div>
   </div>
 
-  <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
-    {{ Form::label('avatar', __('auth.avatar'), array('class' => 'col-sm-3 control-label')) }}
+  <div class="form-group">
+    <%= label_tag(:image, "Image", class: "col-sm-3 control-label") %>
     <div class="col-sm-9">
-      {{ Form::file('avatar') }}
-      @if ($errors->has('avatar'))
-        <span class="help-block">
-          <strong>{{ $errors->first('avatar') }}</strong>
-        </span>
-      @endif
+      <%= f.file_field :image %>
     </div>
   </div>
 
-{{ Form::close() }}
+<% end %>

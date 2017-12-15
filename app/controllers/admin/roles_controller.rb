@@ -11,7 +11,7 @@ class Admin::RolesController < AdminController
   def create
     @resource = Role.new(role_params)
     if @resource.save
-      redirect_to edit_admin_role_path
+      redirect_to edit_admin_role_path(@resource.id)
     else
       render "new"
     end
