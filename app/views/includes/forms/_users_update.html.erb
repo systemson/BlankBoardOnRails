@@ -8,31 +8,29 @@
   </div>
 
   <div class="form-group">
-    <%= label_tag(:old_password, "Old password", class: "col-sm-3 control-label") %>
+    <%= label_tag(:name, "Name", class: "col-sm-3 control-label") %>
     <div class="col-sm-9">
-       <%= f.password_field :old_password, class: 'col-sm-12 control-form' %>
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="form-group">
-    <%= label_tag(:password, "New password", class: "col-sm-3 control-label") %>
-    <div class="col-sm-9">
-       <%= f.password_field :password, class: 'col-sm-12 control-form' %>
+     <%= f.text_field :name, class: 'col-sm-12 control-form' %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= label_tag(:password_confirmation, "Password confirmation", class: "col-sm-3 control-label") %>
+    <%= label_tag(:last_name, "Last Name", class: "col-sm-3 control-label") %>
     <div class="col-sm-9">
-      <%= f.password_field :password_confirmation, class: 'col-sm-12 control-form' %>
+     <%= f.text_field :last_name, class: 'col-sm-12 control-form' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag(:description, "Description", class: "col-sm-3 control-label") %>
+    <div class="col-sm-9">
+     <%= f.text_area :description, class: 'col-sm-12 control-form' %>
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-9">
-      <p class="text-red"><strong>Required fields.</strong></p>
+      <p class="text-red"><strong>Required fields</strong></p>
     </div>
   </div>
 

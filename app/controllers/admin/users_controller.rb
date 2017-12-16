@@ -33,6 +33,17 @@ class Admin::UsersController < AdminController
     @resource.roles = Role.where(id: user_params[:role_ids])
     @resource.save
 
+    redirect_back(fallback_location: admin_users_path)
+  end
+
+  def update_password
+    @resource = User.find(params[:id])
+
+    if(@resource.authenticate(user_params[:old_password]))
+      @resource.password = user_params[:password]
+      @resource.save
+    end
+
     redirect_to edit_admin_user_path
   end
 
@@ -50,15 +61,15 @@ class Admin::UsersController < AdminController
     @image = params[:user][:image]
 
     # Set the image's name
-    @avatar_name = token + File.extname(@image.original_filename)
+    @avatar_img = token + File.extname(@image.original_filename)
 
     # Store the image in file system
-    File.open(Rails.root.join('public', 'img', 'avatar', @avatar_name), 'wb') do |file|
+    File.open(Rails.root.join('public', 'img', 'avatar', @avatar_img), 'wb') do |file|
       file.write(@image.read)
     end
 
     # Update the user's image in DB
-    @resource.image = @avatar_name
+    @resource.image = @avatar_img
     @resource.save
 
     # Redirect to edit user
@@ -77,10 +88,3 @@ class Admin::UsersController < AdminController
     params.require(:user).permit(:user, :name, :last_name, :description, :password, :email, :status, :image, :_destroy, role_ids: [])
   end
 end
-
-
-
-
-
-
-

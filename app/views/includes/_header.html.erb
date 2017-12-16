@@ -45,7 +45,7 @@
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <%= link_to "My profile", admin_users_path, class: "btn btn-primary btn-flat" %>
+                <%= link_to "My profile", admin_user_path(@auth_user.id), class: "btn btn-primary btn-flat" %>
               </div>
 
               <div class="pull-right">

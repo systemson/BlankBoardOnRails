@@ -38,11 +38,12 @@
           <div id="settings" class="tab-pane">
             <div class="box-header with-border">
               <div class="pull-left">
-                <a href="{{ route('users.edit', $resource->id) }}" class="btn btn-primary">{{ __('users.adv-config') }}</a>
+                <%= link_to 'Advanced Settings',
+                  edit_admin_user_path,
+                  :class => "btn btn-primary" %>
               </div>
             </div>
-
-            @include('includes.forms.users_update', ['name' => $name])
+            <%= render "includes/forms/users_update" %>
           </div>
 
         </div><!-- /. tab content -->

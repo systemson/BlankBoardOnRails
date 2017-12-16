@@ -1,5 +1,5 @@
 class Auth::LoginController < FrontController
-  skip_before_action :require_guest, only: [:logout]
+  before_action :require_guest, except: [:logout]
   require 'date'
 
   def login
