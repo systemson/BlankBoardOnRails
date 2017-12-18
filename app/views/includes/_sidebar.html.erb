@@ -2,7 +2,7 @@
 <section class="sidebar">
 
   <!-- Sidebar user panel (optional) -->
-  <a href="#" title="">
+  <a href="<%= url_for(admin_user_path @auth_user.id) %>" title="">
     <div class="user-panel">
 
       <!-- Avatar -->
@@ -33,19 +33,19 @@
     <li class="header">Menu</li>
 
     <!-- Dashboard Module -->
-    <li class="">
+    <li class="<%= current_page?(admin_dashboard_path) ? 'active' : nil %>">
       <%= link_to "<i class='fa fa-home'></i><span>Dashboard</span>".html_safe, admin_dashboard_path %>
     </li>
     <!-- /. dashboard module -->
 
     <!-- Mailbox Module -->
-    <li class="treeview">
+    <li class="treeview <%= current_controller?('emails') ? 'menu-open' : nil %>">
       <a href="#"><i class="fa fa-envelope"></i> <span>Email</span>
         <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>
         </span>
       </a>
-      <ul class="treeview-menu">
+      <ul class="treeview-menu" <% if( current_controller?('emails')) %> style="display: block;" <% end %> >
 
         <!-- Inbox -->
         <li class="">
@@ -70,28 +70,28 @@
     <!-- /. mailbox module -->
 
     <!-- Access section -->
-    <li class="treeview">
+    <li class="treeview <%= current_controller?(['users', 'roles', 'permissions']) ? 'menu-open' : nil %>">
       <a href="#"><i class="fa fa-lock"></i> <span>Access</span>
         <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>
         </span>
       </a>
-      <ul class="treeview-menu">
+      <ul class="treeview-menu" <% if( current_controller?(['users', 'roles', 'permissions'])) %> style="display: block;" <% end %> >
 
         <!-- Users module -->
-        <li class="">
+        <li class="<%= current_controller?('users') ? 'active' : nil %>">
           <%= link_to "<i class='fa fa-users'></i><span>Users</span>".html_safe, admin_users_path %>
         </li>
         <!-- /. user module -->
 
         <!-- Role module -->
-        <li class="">
+        <li class="<%= current_controller?('roles') ? 'active' : nil %>">
           <%= link_to "<i class='fa fa-user'></i><span>Roles</span>".html_safe, admin_roles_path %>
         </li>
         <!-- /. role module -->
 
         <!-- Permission module -->
-        <li class="">
+        <li class="<%= current_controller?('permissions') ? 'active' : nil %>">
           <%= link_to "<i class='fa fa-user'></i><span>Permissions</span>".html_safe, admin_permissions_path %>
         </li>
         <!-- /. permission module -->

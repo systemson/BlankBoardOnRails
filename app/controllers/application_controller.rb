@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
     @auth_check = auth_check
     @guest = guest
   end
+
+  def current_controller?(names)
+    names.include?(controller_name) unless controller_name.blank? || false
+   end
+
+  helper_method :current_controller?
+
 end
