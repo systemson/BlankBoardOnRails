@@ -10,18 +10,22 @@
   </thead>
   <tbody>
     <% @resources.each do |r| %>
+    <tr>
       <td class="text-nowrap">
         <label class="label label-success">
             <i class="fa fa-envelope"></i>
         </label>
       </td>
-      <td class="mailbox-name text-nowrap">
-        <a href="{{ route($name . '.show', $resource->id) }}"><%= r.name %></a>
+      <td class="mailbox-name text-nowrap"><%= link_to r.user.name, admin_email_path(r.id) %>
       </td>
-        <td><%= r.subject %></td>
-        <td class="text-nowrap"><%= r.created_at %></td>
-        <td>Delete</td>
-      </tr>
+      <td><%= r.subject %></td>
+      <td class="text-nowrap"><%= distance_of_time_in_words(r.created_at, Time.now) %></td>
+      <td>Delete</td>
+    </tr>
+    <% end.empty? and begin %>
+    <tr>
+      <td colspan="5">This folder is empty.</td>
+    </tr>
     <% end %>
   </tbody>
 </table>

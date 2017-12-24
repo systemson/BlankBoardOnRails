@@ -19,6 +19,10 @@
         <td class="text-nowrap"><%= r.created_at %></td>
         <td>Delete</td>
       </tr>
+    <% end.empty? and begin %>
+    <tr>
+      <td colspan="5">This folder is empty.</td>
+    </tr>
     <% end %>
   </tbody>
 </table>

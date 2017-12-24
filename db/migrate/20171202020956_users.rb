@@ -10,7 +10,6 @@ class Users < ActiveRecord::Migration[5.1]
       t.column :status, :integer, :default => 1, :null => false
       t.column :image, :string
       t.column :description, :text
-      t.column :last_login, :datetime
       t.column :last_password_change, :datetime
       t.column :remember_token, :string
       t.timestamps

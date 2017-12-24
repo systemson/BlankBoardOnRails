@@ -11,6 +11,7 @@ class Admin::UsersController < AdminController
   def create
     @resource = User.new(user_params)
     @resource.password = 'secret'
+    @resource.roles = Role.where(id: user_params[:role_ids])
     if @resource.save
       redirect_to edit_admin_user_path(@resource)
     else

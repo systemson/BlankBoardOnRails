@@ -48,19 +48,19 @@
       <ul class="treeview-menu" <% if( current_controller?('emails')) %> style="display: block;" <% end %> >
 
         <!-- Inbox -->
-        <li class="">
+        <li class="<%= current_page?(admin_emails_path) || current_page?(admin_draft_emails_path) ? 'active' : nil %>">
           <%= link_to "<i class='fa fa-circle-o'></i><span>Inbox</span>".html_safe, admin_emails_path %>
         </li>
         <!-- /. inbox -->
 
         <!-- Sent emails -->
-        <li class="">
+        <li class="<%= current_page?(admin_sent_emails_path) ? 'active' : nil %>">
           <%= link_to "<i class='fa fa-circle-o'></i><span>Sent</span>".html_safe, admin_sent_emails_path %>
         </li>
         <!-- /. sent emails -->
 
         <!-- Trash emails -->
-        <li class="">
+        <li class="<%= current_page?(admin_trash_emails_path) ? 'active' : nil %>">
           <%= link_to "<i class='fa fa-circle-o'></i><span>Trash</span>".html_safe, admin_trash_emails_path %>
         </li>
         <!-- /. trash emails -->

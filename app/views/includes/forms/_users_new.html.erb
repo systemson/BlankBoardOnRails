@@ -40,8 +40,8 @@
     </div>
 
     <div class="form-group">
-      <%= label_tag(:roles, "Roles", class: "control-label") %>
-      <%= f.collection_select :roles, Role.all, :id, :name, {},  {:class => 'form-control chosen-select', :multiple => 'multiple'} %>
+      <%= label_tag(:role_ids, "Roles", class: "control-label") %>
+      <%= f.collection_select :role_ids, Role.all, :id, :name, {},  {:class => 'form-control chosen-select', :multiple => 'multiple'} %>
     </div>
   </div>
 <% end %>

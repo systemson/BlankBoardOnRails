@@ -1,10 +1,10 @@
-<!-- Main content -->
 <section class="content container-fluid">
 
   <div class="row">
 
     <!-- Alerts -->
     <div class="col-sm-12">
+
     </div>
     <!-- /. alerts -->
 
@@ -13,21 +13,20 @@
     </div>
 
     <div class="col-sm-9">
-      <div class="box box-primary">
 
-        <div class="box-body no-padding">
-          <div class="mailbox-messages">
-            @if (routeNameIs('emails.index'))
-              @include('includes.tables.emails_inbox')
-            @elseif (routeNameIS('emails.draft'))
-              @include('includes.tables.emails_draft')
-            @elseif (routeNameIS('emails.sent'))
-              @include('includes.tables.emails_sent')
-            @elseif (routeNameIS('emails.trash'))
-              @include('includes.tables.emails_trash')
-            @endif
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Emails</h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" type="button" data-widget="collapse">
+              <i class="fa fa-minus"></i>
+            </button>
           </div>
-        </div>
+        </div><!-- /. box header -->
+
+        <div class="box-body">
+          <%= render "includes/forms/emails" %>
+        </div><!-- /. box body -->
 
       </div><!-- /. box -->
 

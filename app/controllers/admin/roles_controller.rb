@@ -10,6 +10,7 @@ class Admin::RolesController < AdminController
 
   def create
     @resource = Role.new(role_params)
+    @resource.permissions = Permission.where(id: role_params[:permission_ids])
     if @resource.save
       redirect_to edit_admin_role_path(@resource.id)
     else

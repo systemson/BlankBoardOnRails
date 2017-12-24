@@ -13,7 +13,6 @@ class Auth::LoginController < FrontController
     if user && user.authenticate(params[:password])
 
       user.remember_token = token
-      user.last_login = Date.today
       user.save
 
       session[:user_id] = user.id
@@ -22,7 +21,7 @@ class Auth::LoginController < FrontController
       redirect_to admin_dashboard_path
     else
 
-      #redirect_back fallback_location: login_path
+      redirect_back fallback_location: login_path
     end
   end
 
