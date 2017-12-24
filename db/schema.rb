@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20171222204913) do
     t.bigint "user_id"
     t.string "status", default: "1"
     t.string "is_read", default: "0"
-    t.index ["email_id", "user_id"], name: "index_recipients_on_email_id_and_user_id"
     t.index ["email_id"], name: "index_recipients_on_email_id"
     t.index ["user_id"], name: "index_recipients_on_user_id"
   end

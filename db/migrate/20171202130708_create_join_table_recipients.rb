@@ -5,8 +5,6 @@ class CreateJoinTableRecipients < ActiveRecord::Migration[5.1]
       t.belongs_to :user, index: true
       t.column :status, :string, :default => 1
       t.column :is_read, :string, :default => 0
-
-      t.index [:email_id, :user_id]
     end
   end
 end

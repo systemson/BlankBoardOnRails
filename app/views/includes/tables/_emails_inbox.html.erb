@@ -16,7 +16,7 @@
             <i class="fa fa-envelope"></i>
         </label>
       </td>
-      <td class="mailbox-name text-nowrap"><%= link_to r.user.name, admin_email_path(r.id) %>
+      <td class="mailbox-name text-nowrap"><%= link_to r.user.name, admin_email_path(r) %>
       </td>
       <td><%= r.subject %></td>
       <td class="text-nowrap"><%= distance_of_time_in_words(r.created_at, Time.now) %></td>

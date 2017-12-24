@@ -4,8 +4,8 @@
 
     <div class="form-group">
       <div class="col-sm-12 text-right">
-        <%= f.submit "Save", :class => "btn btn-success" %>
-        <%= f.button "Reset", type: :reset, :class => "btn btn-default" %>
+        <%= f.button '<i class="fa fa-envelope-o"></i> Send'.html_safe, :name => 'status', :value => 1, :type => 'input', :class => "btn btn-primary" %>
+        <%= f.button '<i class="fa fa-pencil"></i> Draft'.html_safe, :name => 'status', :value => 0, :type => 'input', :class => "btn btn-default" %>
       </div>
     </div>
 
