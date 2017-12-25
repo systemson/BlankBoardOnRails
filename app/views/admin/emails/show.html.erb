@@ -44,35 +44,14 @@
             </div>
           </div>
 
-          <div class="mailbox-read-message">{{ $resource->body }}</div>
+          <div class="mailbox-read-message"><%= @resource.body %></div>
         </div>
 
         <div class="box-footer">
           <div class="pull-right">
-            {{ Form::open(['method' => 'GET','route' => [$name . '.create'], 'class' => 'inline']) }}
-              {{ Form::button('<i class="fa fa-reply"></i> ' . __('messages.reply'), [
-                'type' => 'submit',
-                'class'=> 'btn btn-default',
-                'value' => $resource->id,
-                'name' => 'parent_id',
-               ]) }}
-            {{ Form::close() }}
-            {{ Form::open(['method' => 'GET','route' => [$name . '.create'], 'class' => 'inline']) }}
-              {{ Form::button('<i class="fa fa-share"></i> ' . __('messages.forward'), [
-                'type' => 'submit',
-                'class'=> 'btn btn-default',
-                'value' => $resource->id,
-                'name' => 'parent_id',
-               ]) }}
-               {{ Form::hidden('forward', 1) }}
-            {{ Form::close() }}
-            {{ Form::open(['method' => 'DELETE','route' => [$name . '.destroy', $resource->id], 'class' => 'inline']) }}
-              {{ Form::button('<i class="fa fa-trash"></i> ' . __('messages.delete'), [
-                'type' => 'submit',
-                'class'=> 'btn btn-default',
-                'onclick'=>'return confirm("' . __($name . '.confirm-delete') . '")'
-               ]) }}
-            {{ Form::close() }}
+            <%= link_to '<i class="fa fa-reply"></i> Reply'.html_safe, new_admin_user_path, :class => 'btn btn-default' %>
+            <%= link_to '<i class="fa fa-share"></i> Forward'.html_safe, new_admin_user_path, :class => 'btn btn-default' %>
+            <%= link_to '<i class="fa fa-trash"></i> Delete'.html_safe, admin_email_path(@resource), :method => :delete, :class => 'btn btn-default', :data => { :confirm => 'Are you sure?',  } %>
           </div>
         </div>
 

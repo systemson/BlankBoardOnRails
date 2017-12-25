@@ -19,8 +19,8 @@
       <td class="mailbox-name text-nowrap"><%= link_to r.user.name, admin_email_path(r) %>
       </td>
       <td><%= r.subject %></td>
-      <td class="text-nowrap"><%= distance_of_time_in_words(r.created_at, Time.now) %></td>
-      <td>Delete</td>
+      <td class="text-nowrap"><%= distance_of_time_in_words(r.created_at, Time.now) %> ago</td>
+      <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, admin_email_path(r), :method => :delete, :class => 'btn btn-danger btn-xs', :data => { :confirm => 'Are you sure?' } %></td>
     </tr>
     <% end.empty? and begin %>
     <tr>

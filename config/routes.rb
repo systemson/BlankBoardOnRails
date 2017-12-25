@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     ##
 
     # Emails resource
+    patch 'emails/:id/restore', to: 'emails#restore', as: 'restore_email'
     resources :emails
 
     # Emails folders

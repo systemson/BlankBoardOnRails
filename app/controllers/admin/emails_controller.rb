@@ -16,8 +16,10 @@ class Admin::EmailsController < AdminController
       @resource.recipients.build(:user_id => r)
     end
     if @resource.save
+      flash[:success] = "emails_new"
       redirect_to admin_emails_path
     else
+      flash[:danger] = "emails_failed"
       render :new
     end
   end
@@ -32,19 +34,46 @@ class Admin::EmailsController < AdminController
 
   def destroy
     @resource = Email.find(params[:id])
-    if((@resource.has_owner(current_user) && @resource.status == 1) || @resource.has_recipient(current_user).status == 1)
-      if(@resource.has_owner(current_user))
-        @resource.status = 0
+    if (@resource.has_owner(current_user) && @resource.status == 1) || @resource.recipients.where(user_id: current_user.id, status: 1).present?
+      if @resource.has_owner(current_user)
+        @resource.status = -1
         @resource.save
       else
-        @resource.has_recipient(current_user).status = 0
-        @resource.save
+        @recipient = @resource.recipients.where(user_id: current_user.id).first
+        @recipient.status = -1
+        @recipient.save
       end
+      flash[:warning] = "trash"
     else
-      @resource.status = -1
-      @resource.save
+      if @resource.status == 0
+        @recipients = @resource.recipients.all
+        @resource.recipients.destroy(@recipients)
+        @resource.destroy
+      elsif @resource.has_owner(current_user)
+        @resource.status = -2
+        @resource.save
+      else
+        @recipient = Recipient.where(user_id: current_user.id, email_id: @resource.id).first
+        @recipient.status = -2
+        @recipient.save
+      end
+      flash[:danger] = "delete"
     end
-    redirect_to admin_emails_path
+    redirect_to admin_trash_emails_path
+  end
+
+  def restore
+    @resource = Email.find(params[:id])
+    if @resource.has_owner(current_user)
+      @resource.status = 1
+      @resource.save
+    else
+      @recipient = Recipient.where(user_id: current_user.id, email_id: @resource.id).first
+      @recipient.status = 1
+      @recipient.save
+    end
+    flash[:info] = "restore"
+    redirect_back fallback_location: admin_emails_path
   end
 
   # Folders
@@ -59,7 +88,7 @@ class Admin::EmailsController < AdminController
   end
 
   def trash
-    @resources = current_user.trash_emails
+    puts @resources = current_user.trash_emails
     render :index
   end
 
