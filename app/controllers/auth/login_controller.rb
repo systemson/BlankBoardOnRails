@@ -3,7 +3,7 @@ class Auth::LoginController < FrontController
   require 'date'
 
   def login
-    @user = auth_user
+    @user = current_user
   end
 
   def auth
@@ -18,9 +18,11 @@ class Auth::LoginController < FrontController
       session[:user_id] = user.id
       session[:user_password] = params[:password]
 
+      flash[:success] = "login"
       redirect_to admin_dashboard_path
     else
 
+      flash[:danger] = "failed-login"
       redirect_back fallback_location: login_path
     end
   end
@@ -31,6 +33,7 @@ class Auth::LoginController < FrontController
     user.save
 
     reset_session
+    flash[:danger] = "logout"
     redirect_to login_path
   end
 

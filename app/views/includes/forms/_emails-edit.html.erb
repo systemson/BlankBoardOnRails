@@ -10,7 +10,7 @@
     </div>
 
     <div class="form-group">
-     <%= f.collection_select :recipient_ids, User.where.not(id: auth_user.id), :id, :name, {:selected => f.object.recipient_ids.collect {|p| p.id}}, {:class => 'form-control chosen-select', :multiple => 'multiple'} %>
+     <%= f.collection_select :recipient_ids, User.where.not(id: current_user.id), :id, :name, {:selected => f.object.recipient_ids.collect {|p| p.id}}, {:class => 'form-control chosen-select', :multiple => 'multiple'} %>
     </div>
 
     <div class="form-group">

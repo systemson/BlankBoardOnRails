@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include AuthHelper
 
   def set_variables
-    @auth_user = auth_user
+    @current_user = current_user
     @auth_check = auth_check
     @guest = guest
   end

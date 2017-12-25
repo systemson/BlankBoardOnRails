@@ -1,4 +1,4 @@
-@if (session('success'))
+<% if flash[:success] %>
   <div class="alert alert-success alert-dismissable fade in">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">
       <i class="fa fa-close"></i>
@@ -9,7 +9,7 @@
       @endif
     </p>
   </div>
-@elseif (session('info'))
+<% elsif flash[:info] %>
   <div class="alert alert-info alert-dismissable fade in">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">
       <i class="fa fa-close"></i>
@@ -20,7 +20,7 @@
       @endif
     </p>
   </div>
-@elseif (session('warning'))
+<% elsif flash[:warning] %>
   <div class="alert alert-warning alert-dismissable fade in">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">
       <i class="fa fa-close"></i>
@@ -30,7 +30,7 @@
       <p>{{ __(session('warning') . '-small') }}</p>
     @endif
   </div>
-@elseif (session('danger'))
+<% elsif flash[:danger] %>
   <div class="alert alert-danger alert-dismissable fade in">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">
       <i class="fa fa-close"></i>
@@ -40,15 +40,4 @@
       <p>{{ __(session('danger') . '-small') }}</p>
     @endif
   </div>
-@elseif ($errors->any())
-  <div class="alert alert-danger alert-dismissable fade in">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">
-      <i class="fa fa-close"></i>
-    </a>
-    <ul>
-      @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-      @endforeach
-    </ul>
-  </div>
-@endif
+<% end %>

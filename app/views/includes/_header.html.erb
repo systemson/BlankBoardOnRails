@@ -24,18 +24,18 @@
         <li class="dropdown user user-menu">
 
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="<%= @auth_user.avatar %>" class="user-image">
-            <span class="hidden-xs"><%= @auth_user.name %></span>
+            <img src="<%= @current_user.avatar %>" class="user-image">
+            <span class="hidden-xs"><%= @current_user.name %></span>
           </a>
 
           <ul class="dropdown-menu">
 
             <li class="user-header">
               <!-- The user image in the menu -->
-              <img src="<%= @auth_user.avatar %>" class="img-circle" style="object-fit: cover;" alt="User Image">
+              <img src="<%= @current_user.avatar %>" class="img-circle" style="object-fit: cover;" alt="User Image">
 
               <!-- The user name -->
-              <p><%= @auth_user.name %></p>
+              <p><%= @current_user.name %></p>
             </li>
 
             <!-- Menu Body -->
@@ -45,7 +45,7 @@
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <%= link_to "My profile", admin_user_path(@auth_user.id), class: "btn btn-primary btn-flat" %>
+                <%= link_to "My profile", admin_user_path(@current_user.id), class: "btn btn-primary btn-flat" %>
               </div>
 
               <div class="pull-right">
