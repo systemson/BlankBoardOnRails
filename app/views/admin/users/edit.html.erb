@@ -9,13 +9,13 @@
     </div>
     <!-- /. alert -->
 
-    <% if(@auth_user.id == @resource.id) %>
+    <% if(@current_user.id == @resource.id) %>
     <div class="col-sm-3">
       <%= render "includes/box-profile" %>
     </div>
     <% end %>
 
-    <div class="<% if(@auth_user.id == @resource.id) %> col-sm-9 <% else %> col-sm-12 <% end %>">
+    <div class="<% if(@current_user.id == @resource.id) %> col-sm-9 <% else %> col-sm-12 <% end %>">
 
       <div class="nav-tabs-custom">
 

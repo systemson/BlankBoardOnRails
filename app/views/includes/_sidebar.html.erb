@@ -38,6 +38,7 @@
     </li>
     <!-- /. dashboard module -->
 
+    <% if current_user.is_active && !current_user.password_expired %>
     <!-- Mailbox Module -->
     <li class="treeview <%= current_controller?('emails') ? 'menu-open' : nil %>">
       <a href="#"><i class="fa fa-envelope"></i> <span>Email</span>
@@ -68,7 +69,9 @@
       </ul>
     </li>
     <!-- /. mailbox module -->
+    <% end %>
 
+    <% if current_user.has_permission('Users|Roles|Permissions', true) %>
     <!-- Access section -->
     <li class="treeview <%= current_controller?(['users', 'roles', 'permissions']) ? 'menu-open' : nil %>">
       <a href="#"><i class="fa fa-lock"></i> <span>Access</span>
@@ -78,27 +81,34 @@
       </a>
       <ul class="treeview-menu" <% if( current_controller?(['users', 'roles', 'permissions'])) %> style="display: block;" <% end %> >
 
+        <% if current_user.has_permission('Users', true) %>
         <!-- Users module -->
         <li class="<%= current_controller?('users') ? 'active' : nil %>">
           <%= link_to "<i class='fa fa-users'></i><span>Users</span>".html_safe, admin_users_path %>
         </li>
         <!-- /. user module -->
+        <% end %>
 
+        <% if current_user.has_permission('Roles', true) %>
         <!-- Role module -->
         <li class="<%= current_controller?('roles') ? 'active' : nil %>">
           <%= link_to "<i class='fa fa-user'></i><span>Roles</span>".html_safe, admin_roles_path %>
         </li>
         <!-- /. role module -->
+        <% end %>
 
+        <% if current_user.has_permission('Permissions', true) %>
         <!-- Permission module -->
         <li class="<%= current_controller?('permissions') ? 'active' : nil %>">
           <%= link_to "<i class='fa fa-user'></i><span>Permissions</span>".html_safe, admin_permissions_path %>
         </li>
         <!-- /. permission module -->
+        <% end %>
 
      </ul>
     </li>
     <!-- /. access section -->
+    <% end %>
 
   </ul>
   <!-- /.sidebar-menu -->

@@ -12,28 +12,32 @@ User.create([ {
     name: 'Superadmin',
     description: 'I am the superuser. I have no limitations. Don\'t use me on production.',
     email: 'superadmin@admin.com',
-    password: 'admin'
+    password: 'superadmin',
+    last_password_change: Time.now
   },
   {
     user: 'admin',
     name: 'Diseños Devilu',
     description: 'I am the main administration account. Use me when you need to administrate the app.',
     email: 'admin@admin.com',
-    password: 'admin'
+    password: 'admin',
+    last_password_change: Time.now
   },
   {
     user: 'manager',
     name: 'Manager',
     description: 'I am the manager of the app. Use me on a regular basis.',
     email: 'manager@admin.com',
-    password: 'manager'
+    password: 'manager',
+    last_password_change: Time.now
   },
   {
     user: 'user',
     name: 'Default user',
     description: 'I am the default user. Grant me no special permissions.',
     email: 'manager@admin.com',
-    password: 'user'
+    password: 'secret',
+    last_password_change: Time.now
   },
 ])
 
