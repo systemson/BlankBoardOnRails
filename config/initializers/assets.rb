@@ -19,6 +19,7 @@ Rails.application.config.assets.precompile += %w( AdminLTE.min.css )
 Rails.application.config.assets.precompile += %w( font-awesome.min.css )
 Rails.application.config.assets.precompile += %w( skins/skin-blue.min )
 Rails.application.config.assets.precompile += %w( chosen.min.css )
+Rails.application.config.assets.precompile += %w( app.css )
 
 # Scripts
 Rails.application.config.assets.precompile += %w( jquery.min.js )

@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20171222204913) do
   create_table "recipients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "email_id"
     t.bigint "user_id"
-    t.string "status", default: "1"
-    t.string "is_read", default: "0"
+    t.integer "status", default: 1
+    t.integer "is_read", default: 0
     t.index ["email_id"], name: "index_recipients_on_email_id"
     t.index ["user_id"], name: "index_recipients_on_user_id"
   end

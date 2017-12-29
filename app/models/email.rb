@@ -7,4 +7,9 @@ class Email < ApplicationRecord
   def has_owner(user)
      self.user_id == user.id
   end
+
+  def recipient(user)
+    @recipient = self.recipients.find_by(user_id: user.id)
+  end
+
 end

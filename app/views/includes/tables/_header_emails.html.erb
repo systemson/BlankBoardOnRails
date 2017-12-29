@@ -1,0 +1,20 @@
+<% current_user.unread_emails.each do |e| %>
+  <li>
+    <a href="<%= url_for admin_email_path(e) %>">
+      <div class="pull-left">
+        <img class="img-circle" src="<%= User.find(e.user.id).avatar %>">
+      </div>
+      <h4>
+        <%= truncate(e.subject, :length => 20) %>
+        <small><i class="fa fa-clock-o"></i> <%= distance_of_time_in_words(e.created_at, Time.now) %> ago</small>
+      </h4>
+      <%= truncate(e.body, :length => 40) %>
+    </a>
+  </li>
+<% end.empty? and begin %>
+  <li>
+    <a href="#">
+      <p>This folder is empty.</p>
+    </a>
+  <li>
+<% end %>

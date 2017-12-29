@@ -26,6 +26,10 @@ class Admin::EmailsController < AdminController
 
   def show
     @resource = Email.find(params[:id])
+    @recipient = @resource.recipient(current_user)
+    if @recipient.is_read == 0
+      @recipient.update(is_read: 1)
+    end
   end
 
   def edit
